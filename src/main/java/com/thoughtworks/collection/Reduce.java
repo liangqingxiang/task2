@@ -13,42 +13,119 @@ public class Reduce {
     }
 
     public int getMaximum() {
-        throw new NotImplementedException();
+        int maximum = arrayList.get(0);
+
+        for(int i=1; i<arrayList.size(); i++){
+            if(arrayList.get(i) > maximum){
+                maximum = arrayList.get(i);
+            }
+        }
+
+        return maximum;
     }
 
     public double getMinimum() {
-        throw new NotImplementedException();
+        int mimimum = arrayList.get(0);
+
+        for(int i=1; i<arrayList.size(); i++){
+            if(arrayList.get(i) < mimimum){
+                mimimum = arrayList.get(i);
+            }
+        }
+
+        return mimimum;
     }
 
     public double getAverage() {
-        throw new NotImplementedException();
+        int sum = 0;
+
+        for(int i=0; i<arrayList.size(); i++){
+            sum += arrayList.get(i);
+        }
+        return (double) sum/arrayList.size();
     }
 
     public double getOrderedMedian() {
-        throw new NotImplementedException();
+        double result;
+        int index;
+
+        if(arrayList.size()%2 != 0){
+            index = arrayList.size()/2;
+            result = arrayList.get(index);
+        }else{
+            index = arrayList.size()/2;
+            result = ((double)(arrayList.get(index) + arrayList.get(index-1)))/2;
+        }
+
+        return result;
     }
 
     public int getFirstEven() {
-        throw new NotImplementedException();
+        for(int i=0; i<arrayList.size(); i++){
+            if(arrayList.get(i)%2 == 0){
+                return arrayList.get(i);
+            }
+        }
+
+        return -1;
     }
 
     public int getIndexOfFirstEven() {
-        throw new NotImplementedException();
+        for(int i=0; i<arrayList.size(); i++){
+            if(arrayList.get(i)%2 == 0){
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public boolean isEqual(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        if(arrayList.size() != arrayList.size()){
+            return false;
+        }else{
+            for(int i=0; i<arrayList.size(); i++){
+
+                if(arrayList.get(i) != arrayList.get(i)){
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
-    public Double getMedianInLinkList(SingleLink singleLink) {
-        throw new NotImplementedException();
+    public double getMedianInLinkList(SingleLink<Integer> singleLink) {
+
+        for(int i=0; i<arrayList.size(); i++){
+
+            singleLink.addTailPointer(arrayList.get(i));
+        }
+
+        int index = arrayList.size()/2;
+
+        if(arrayList.size()%2 == 0){
+            return (singleLink.getNode(index) + singleLink.getNode(index+1))/2.0;
+        }else{
+            return singleLink.getNode(index+1);
+        }
     }
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+        for(int i=arrayList.size()-1; i>=0; i--){
+            if(arrayList.get(i)%2 == 1){
+                return arrayList.get(i);
+            }
+        }
+        return -1;
     }
 
     public int getIndexOfLastOdd() {
-        throw new NotImplementedException();
+        for(int i=arrayList.size()-1; i>=0; i--){
+            if(arrayList.get(i)%2 == 1){
+                return i;
+            }
+        }
+        return -1;
     }
 }
