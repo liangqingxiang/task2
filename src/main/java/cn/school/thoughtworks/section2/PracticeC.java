@@ -15,17 +15,19 @@ public class PracticeC {
         while (iterator.hasNext()) {
             String c = (String) iterator.next();
             String key = c.substring(0, 1);
-            String regEx="[^0-9]";
+            String regEx = "[^0-9]";
             Pattern p = Pattern.compile(regEx);
             Matcher m = p.matcher(c);
-            String numStr=m.replaceAll("").trim();
-            int num=1;
-            if(numStr!=null&&numStr!="")
-                num= Integer.parseInt(numStr);
+            String numStr = m.replaceAll("").trim();
+            int num = 1;
+            if (numStr != null && !numStr.equals("")) {
+                num = Integer.parseInt(numStr);
+            }
             if (map.get(key) == null)
                 map.put(key, 0);
             map.put(key, map.get(key) + num);
         }
         return map;
+
     }
 }
